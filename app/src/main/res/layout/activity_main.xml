@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@color/black"
+    tools:context=".MainActivity">
+
+    <!-- Welcome Message -->
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_message"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:layout_marginBottom="48dp"
+        android:fontFamily="sans-serif-medium" />
+
+    <!-- Context Selection -->
+    <TextView
+        android:id="@+id/tvSelectContext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_context"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp" />
+
+    <Spinner
+        android:id="@+id/spinnerContext"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/button_background"
+        android:popupBackground="@color/card_background"
+        android:layout_marginBottom="32dp"
+        android:padding="8dp"
+        style="@style/Widget.AppCompat.Spinner.DropDown" />
+
+    <!-- Activity Selection -->
+    <TextView
+        android:id="@+id/tvSelectActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_activity"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp" />
+
+    <Spinner
+        android:id="@+id/spinnerActivity"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/button_background"
+        android:popupBackground="@color/card_background"
+        android:layout_marginBottom="48dp"
+        android:padding="8dp"
+        style="@style/Widget.AppCompat.Spinner.DropDown" />
+
+    <!-- Spacer to push buttons to bottom -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Action Buttons -->
+    <Button
+        android:id="@+id/btnStartSession"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="@string/start_session"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/blue_label"
+        android:enabled="false"
+        android:layout_marginBottom="16dp"
+        style="@style/Widget.MaterialComponents.Button" />
+
+    <Button
+        android:id="@+id/btnSettings"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="@string/settings"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/button_background"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:strokeColor="@color/divider_color" />
+
+</LinearLayout>
