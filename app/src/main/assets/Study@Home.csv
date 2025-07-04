@@ -1,0 +1,26 @@
+home
+study
+Study@Home Template
+1.0
+Time,Event_Type,Alert_Level,Custom_Message,Duration
+07:00,WAKE_UP,CRITICAL,Time to wake up!,
+07:30,MEAL_REMINDER_15MIN,TRANSITION,Breakfast in 15 minutes,
+07:45,MEAL_TIME,CRITICAL,Breakfast time,30
+08:15,STUDY_START,REFERENCE,Begin morning study session,90
+09:45,BREAK_REMINDER,TRANSITION,Take a 15 minute break,15
+10:00,STUDY_START,REFERENCE,Continue study session,90
+11:30,STUDY_REMAINING_30MIN,REFERENCE,30 minutes remaining,
+12:00,MEAL_TIME,CRITICAL,Lunch time,45
+12:45,REST,REFERENCE,Rest period,30
+13:15,NO_COFFEE,CRITICAL,Last coffee of the day,
+13:30,STUDY_START,REFERENCE,Afternoon study session,120
+15:30,BREAK_REMINDER,TRANSITION,Take a break,20
+15:50,STUDY_START,REFERENCE,Final study block,90
+17:20,STUDY_REMAINING_30MIN,REFERENCE,30 minutes remaining,
+17:50,WORK_END,REFERENCE,Study session complete,
+18:00,MEAL_REMINDER_15MIN,TRANSITION,Dinner in 15 minutes,
+18:15,MEAL_TIME,CRITICAL,Dinner time,45
+19:00,REST,REFERENCE,Evening free time,120
+21:00,STOP_SCREENS,CRITICAL,Turn off all screens,
+21:30,BEDTIME,CRITICAL,Prepare for bed,
+22:00,BEDTIME,CRITICAL,Time to sleep,

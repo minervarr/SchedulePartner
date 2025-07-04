@@ -1,0 +1,17 @@
+office
+work
+Work@Office Template
+1.0
+Time,Event_Type,Alert_Level,Custom_Message,Duration
+08:30,WORK_START,REFERENCE,Begin work day,
+09:00,WORK_START,REFERENCE,Morning focus block,120
+11:00,BREAK_REMINDER,TRANSITION,Coffee break,15
+11:15,WORK_START,REFERENCE,Continue morning work,90
+12:45,MEAL_REMINDER_15MIN,TRANSITION,Lunch in 15 minutes,
+13:00,MEAL_TIME,CRITICAL,Lunch break,60
+14:00,NO_COFFEE,CRITICAL,Last coffee of the day,
+14:15,WORK_START,REFERENCE,Afternoon work session,90
+15:45,BREAK_REMINDER,TRANSITION,Afternoon break,15
+16:00,WORK_START,REFERENCE,Final work block,90
+17:30,WORK_END,REFERENCE,End of work day,
+18:00,TRANSITION,REFERENCE,Commute home,

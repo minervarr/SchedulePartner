@@ -1,0 +1,12 @@
+home
+rest
+Rest@Home Template
+1.0
+Time,Event_Type,Alert_Level,Custom_Message,Duration
+09:00,WAKE_UP,REFERENCE,Good morning - rest day,
+10:00,MEAL_TIME,CRITICAL,Late breakfast,45
+13:00,MEAL_TIME,CRITICAL,Lunch time,60
+14:30,NO_COFFEE,CRITICAL,Last coffee for good sleep,
+18:30,MEAL_TIME,CRITICAL,Dinner time,60
+21:30,STOP_SCREENS,CRITICAL,Wind down for tomorrow,
+22:30,BEDTIME,CRITICAL,Rest well for tomorrow,
