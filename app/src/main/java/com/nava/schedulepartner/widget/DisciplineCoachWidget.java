@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.widget.RemoteViews;
+import java.util.Locale;
 
 import com.nava.schedulepartner.R;
 import com.nava.schedulepartner.activities.CoachingActivity;
@@ -203,9 +204,11 @@ public class DisciplineCoachWidget extends AppWidgetProvider {
         // Update next event
         if (nextEvent != null) {
             long minutesUntil = nextEvent.getMinutesUntil(now);
-            String nextText = String.format("Next: %s in %d min",
+            String nextText = String.format(Locale.US,
+                    context.getString(R.string.widget_next_format),
                     nextEvent.getDisplayMessage(),
                     Math.max(0, minutesUntil));
+
             views.setTextViewText(R.id.widgetNextEvent, nextText);
             views.setViewVisibility(R.id.widgetNextEvent,
                     android.view.View.VISIBLE);

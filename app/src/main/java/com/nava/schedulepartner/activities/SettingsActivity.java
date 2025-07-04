@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
-import android.widget.Switch;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,7 +57,7 @@ public class SettingsActivity extends AppCompatActivity {
     private Button btnExportSchedule;
     private Button btnImportAudio;
     private Button btnClearAudio;
-    private Switch switchAudioEnabled;
+    private SwitchMaterial switchAudioEnabled;
     private SeekBar seekBarVolume;
     private TextView tvVolumeLevel;
     private TextView tvAppVersion;
@@ -124,7 +124,7 @@ public class SettingsActivity extends AppCompatActivity {
         switchAudioEnabled.setText(R.string.global_audio_toggle);
 
         // Set app version
-        tvAppVersion.setText("Version 1.0");
+        tvAppVersion.setText(getString(R.string.version_format, getString(R.string.app_version)));
     }
 
     /**
@@ -238,7 +238,7 @@ public class SettingsActivity extends AppCompatActivity {
      * @param volumePercent Volume as percentage (0-100)
      */
     private void updateVolumeDisplay(int volumePercent) {
-        tvVolumeLevel.setText("Volume: " + volumePercent + "%");
+        tvVolumeLevel.setText(getString(R.string.volume_format, volumePercent));
     }
 
     /**
@@ -265,7 +265,7 @@ public class SettingsActivity extends AppCompatActivity {
             try (FileOutputStream fos = new FileOutputStream(tempFile)) {
                 byte[] buffer = new byte[4096];
                 int bytesRead;
-                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                while (inputStream != null && (bytesRead = inputStream.read(buffer)) != -1) {
                     fos.write(buffer, 0, bytesRead);
                 }
             }

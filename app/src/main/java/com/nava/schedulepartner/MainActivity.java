@@ -345,7 +345,7 @@ public class MainActivity extends AppCompatActivity {
     private void startCoachingSession() {
         if (selectedContext == null || selectedActivity == null) {
             Toast.makeText(this,
-                    "Please select both context and activity",
+                    getString(R.string.please_select_both),
                     Toast.LENGTH_SHORT).show();
             return;
         }

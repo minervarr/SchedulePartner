@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
     android:padding="16dp"
     tools:context=".activities.CoachingActivity">
 
@@ -20,7 +19,7 @@
             android:id="@+id/tvCurrentTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00:00"
+            android:text="@string/default_time"
             android:textColor="@color/white"
             android:textSize="32sp"
             android:fontFamily="sans-serif-light" />
@@ -36,7 +35,7 @@
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@android:drawable/ic_lock_silent_mode_off"
-            android:tint="@color/white"
+            app:tint="@color/white"
             android:contentDescription="@string/mute_audio" />
     </LinearLayout>
 
@@ -47,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/layoutTopBar"
         android:layout_marginTop="8dp"
-        android:text="Study @ Home"
+        android:text="@string/sample_session"
         android:textColor="@color/white_secondary"
         android:textSize="18sp"
         android:textAlignment="center" />
@@ -85,7 +84,7 @@
             android:id="@+id/tvCurrentEventLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="NO COFFEE"
+            android:text="@string/sample_event"
             android:textColor="@color/red_label"
             android:textSize="36sp"
             android:textAlignment="center"
@@ -96,7 +95,7 @@
             android:id="@+id/tvCurrentEventTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="07:45"
+            android:text="@string/sample_event_time"
             android:textColor="@color/white_secondary"
             android:textSize="18sp"
             android:textAlignment="center" />
@@ -163,7 +162,7 @@
             android:layout_height="56dp"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
-            android:text="Pause"
+            android:text="@string/pause"
             android:textColor="@color/white"
             android:backgroundTint="@color/button_background"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -175,7 +174,7 @@
             android:layout_height="56dp"
             android:layout_weight="1"
             android:layout_marginStart="8dp"
-            android:text="End Session"
+            android:text="@string/end_session"
             android:textColor="@color/white"
             android:backgroundTint="@color/red_label_dark"
             style="@style/Widget.MaterialComponents.Button" />

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/widgetContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/black"
     android:padding="8dp">
 
     <!-- Top Row: Time and Mute Button -->
@@ -19,7 +19,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="00:00"
+            android:text="@string/default_time"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:fontFamily="sans-serif-light" />
@@ -30,7 +30,7 @@
             android:layout_height="32dp"
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:src="@android:drawable/ic_lock_silent_mode_off"
-            android:tint="@color/white"
+            app:tint="@color/white"
             android:contentDescription="@string/mute_audio"
             android:visibility="gone" />
     </LinearLayout>
@@ -40,7 +40,7 @@
         android:id="@+id/widgetSessionInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Study @ Home"
+        android:text="@string/sample_session"
         android:textColor="@color/white_secondary"
         android:textSize="12sp"
         android:layout_marginTop="4dp" />
@@ -50,7 +50,7 @@
         android:id="@+id/widgetCurrentEvent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="NO COFFEE"
+        android:text="@string/sample_event"
         android:textColor="@color/red_label"
         android:textSize="18sp"
         android:fontFamily="sans-serif-medium"
@@ -63,7 +63,7 @@
         android:id="@+id/widgetNextEvent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Next: Study Start in 15 min"
+        android:text="@string/widget_next_format"
         android:textColor="@color/white_secondary"
         android:textSize="11sp"
         android:layout_marginTop="4dp"

@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-    android:background="@color/black"
     tools:context=".MainActivity">
 
     <!-- Welcome Message -->

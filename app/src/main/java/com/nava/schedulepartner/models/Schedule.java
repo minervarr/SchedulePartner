@@ -7,7 +7,7 @@ import java.util.List;
 import java.io.BufferedReader;
 import java.io.StringReader;
 import java.io.IOException;
-
+import java.util.Locale;
 /**
  * Represents a complete daily schedule template for a Context+Activity combination.
  * <p>
@@ -428,7 +428,8 @@ public class Schedule {
 
     @Override
     public String toString() {
-        return String.format("Schedule[%s: %d events, v%s]",
+        return String.format(Locale.US, "Schedule[%s: %d events, v%s]",
                 name, events.size(), version);
+
     }
 }

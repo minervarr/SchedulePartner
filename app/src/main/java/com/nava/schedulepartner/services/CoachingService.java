@@ -213,7 +213,8 @@ public class CoachingService extends Service {
 
         // Acquire wake lock
         if (!wakeLock.isHeld()) {
-            wakeLock.acquire();
+            // Acquire wake lock for the session duration with 12 hour timeout
+            wakeLock.acquire(12 * 60 * 60 * 1000L); // 12 hours in milliseconds
         }
 
         // Start event checking
@@ -231,8 +232,9 @@ public class CoachingService extends Service {
      * to ensure they bypass Do Not Disturb when needed.
      */
     private void createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(
+        // Always create channel since minSdk is 30 (Android 11)
+
+        NotificationChannel channel = new NotificationChannel(
                     CHANNEL_ID,
                     getString(R.string.notification_channel_name),
                     NotificationManager.IMPORTANCE_HIGH
@@ -242,7 +244,6 @@ public class CoachingService extends Service {
             channel.enableVibration(true);
 
             notificationManager.createNotificationChannel(channel);
-        }
     }
 
     /**

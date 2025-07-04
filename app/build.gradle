@@ -35,7 +35,7 @@ dependencies {
     implementation libs.material
 
     // For Java 8+ Time API support on older Android versions
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
 
     // Testing dependencies
     testImplementation libs.junit

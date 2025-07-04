@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
     android:fillViewport="true"
     tools:context=".activities.SettingsActivity">
 
@@ -29,7 +28,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Schedule Management"
+            android:text="@string/schedule_management"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:layout_marginBottom="12dp" />
@@ -71,7 +70,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Audio Management"
+            android:text="@string/audio_management"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:layout_marginBottom="12dp" />
@@ -80,7 +79,7 @@
             android:id="@+id/btnImportAudio"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:text="Import Audio Zip"
+            android:text="@string/import_audio_zip"
             android:textColor="@color/white"
             android:backgroundTint="@color/button_background"
             android:layout_marginBottom="8dp"
@@ -93,7 +92,7 @@
             android:id="@+id/btnClearAudio"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:text="Clear All Audio"
+            android:text="@string/clear_all_audio"
             android:textColor="@color/white"
             android:backgroundTint="@color/red_label_dark"
             android:layout_marginBottom="24dp"
@@ -102,7 +101,7 @@
             app:iconTint="@color/white" />
 
         <!-- Audio Settings -->
-        <Switch
+        <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switchAudioEnabled"
             android:layout_width="match_parent"
             android:layout_height="56dp"
@@ -116,7 +115,7 @@
             android:id="@+id/tvVolumeLevel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Volume: 70%"
+            android:text="@string/volume_format"
             android:textColor="@color/white_secondary"
             android:textSize="14sp"
             android:layout_marginBottom="8dp" />
@@ -142,7 +141,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="About"
+            android:text="@string/about"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:layout_marginBottom="12dp" />
@@ -151,7 +150,7 @@
             android:id="@+id/tvAppVersion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Version 1.0"
+            android:text="@string/version_format"
             android:textColor="@color/white_secondary"
             android:textSize="14sp"
             android:layout_marginBottom="8dp" />
@@ -159,7 +158,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Personal Discipline Coach"
+            android:text="@string/app_subtitle"
             android:textColor="@color/white_secondary"
             android:textSize="14sp"
             android:layout_marginBottom="8dp" />
@@ -167,7 +166,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Minute-by-minute coaching for optimal productivity"
+            android:text="@string/app_description"
             android:textColor="@color/white_secondary"
             android:textSize="12sp"
             android:layout_marginBottom="24dp" />

@@ -32,6 +32,7 @@ import com.nava.schedulepartner.utils.ScheduleManager;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * The main coaching interface that displays real-time schedule guidance.
@@ -411,7 +412,7 @@ public class CoachingActivity extends AppCompatActivity implements CoachingServi
         // Show placeholder if no upcoming events
         if (count == 0) {
             TextView noEvents = new TextView(this);
-            noEvents.setText("No upcoming events");
+            noEvents.setText(getString(R.string.no_upcoming_events));
             noEvents.setTextColor(ContextCompat.getColor(this, R.color.white_secondary));
             noEvents.setTextSize(16);
             noEvents.setPadding(0, 16, 0, 16);
@@ -466,12 +467,12 @@ public class CoachingActivity extends AppCompatActivity implements CoachingServi
                 if (minutesUntil >= 60) {
                     long hours = minutesUntil / 60;
                     long minutes = minutesUntil % 60;
-                    timeText = String.format("%dh %dm", hours, minutes);
+                    timeText = String.format(Locale.US, "%dh %dm", hours, minutes);
                 } else {
                     timeText = minutesUntil + " min";
                 }
 
-                tvTimeUntilNext.setText(getString(R.string.time_until_next) + ": " + timeText);
+                tvTimeUntilNext.setText(getString(R.string.time_until_next_format, timeText));
                 tvTimeUntilNext.setVisibility(View.VISIBLE);
             } else {
                 tvTimeUntilNext.setVisibility(View.GONE);
@@ -512,12 +513,14 @@ public class CoachingActivity extends AppCompatActivity implements CoachingServi
         sessionPaused = !sessionPaused;
 
         if (sessionPaused) {
-            btnPauseSession.setText("Resume");
-            tvSessionInfo.setText(tvSessionInfo.getText() + " - " +
-                    getString(R.string.session_paused));
+            btnPauseSession.setText(getString(R.string.resume));
+            String sessionInfo = sessionActivity.getDisplayName() + " @ " +
+                    sessionContext.getDisplayName();
+            tvSessionInfo.setText(getString(R.string.session_info_format,
+                    sessionInfo, getString(R.string.session_paused)));
             audioManager.stopCurrentAudio();
         } else {
-            btnPauseSession.setText("Pause");
+            btnPauseSession.setText(getString(R.string.pause));
             String sessionInfo = sessionActivity.getDisplayName() + " @ " +
                     sessionContext.getDisplayName();
             tvSessionInfo.setText(sessionInfo);
@@ -614,5 +617,6 @@ public class CoachingActivity extends AppCompatActivity implements CoachingServi
     public void onBackPressed() {
         // Require confirmation to exit during active session
         confirmEndSession();
+        // Don't call super to prevent back navigation during session
     }
 }
