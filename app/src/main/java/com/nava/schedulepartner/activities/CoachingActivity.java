@@ -429,8 +429,15 @@ public class CoachingActivity extends AppCompatActivity implements CoachingServi
         });
     }
 
+    /**
+     * Handles back button press.
+     * <p>
+     * Shows confirmation before ending the session to prevent
+     * accidental exits during coaching.
+     */
     @Override
-    public void onBackPressed() {
+    public void OnBackPressedCallback() {
         confirmEndSession();
+        // Don't call super to prevent default back behavior
     }
 }

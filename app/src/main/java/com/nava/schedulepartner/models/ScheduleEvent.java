@@ -73,6 +73,14 @@ public class ScheduleEvent implements Comparable<ScheduleEvent> {
             DateTimeFormatter.ofPattern("HH:mm");
 
     /**
+     * Alternative formatter for parsing 12-hour format with AM/PM.
+     * <p>
+     * Supports times like "05:00:00 PM" from CSV files.
+     */
+    private static final DateTimeFormatter TIME_FORMATTER_12H =
+            DateTimeFormatter.ofPattern("hh:mm:ss a");
+
+    /**
      * Creates a new ScheduleEvent with all parameters.
      *
      * @param time The exact trigger time for this event

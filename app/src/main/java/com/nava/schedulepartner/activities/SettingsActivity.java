@@ -244,10 +244,24 @@ public class SettingsActivity extends AppCompatActivity {
     /**
      * Launches file picker for schedule import.
      */
+    /**
+     * Launches file picker for schedule import.
+     */
     private void importSchedule() {
-        importScheduleLauncher.launch("text/*");
+        // Use "*/*" to allow the user to select any file.
+        // Your app's logic will handle validation.
+        importScheduleLauncher.launch("*/*");
     }
 
+
+    /**
+     * Handles the selected schedule file for import.
+     * <p>
+     * Copies the file to temporary location, validates it as
+     * a schedule, and imports if valid.
+     *
+     * @param uri The URI of the selected file
+     */
     /**
      * Handles the selected schedule file for import.
      * <p>
@@ -259,18 +273,26 @@ public class SettingsActivity extends AppCompatActivity {
     private void handleScheduleImport(Uri uri) {
         // Run on background thread
         new Thread(() -> {
+            File tempFile = new File(getCacheDir(), "import_schedule.csv");
             try {
                 // Copy file to temp location
                 InputStream inputStream = getContentResolver().openInputStream(uri);
-                File tempFile = new File(getCacheDir(), "import_schedule.csv");
-
                 try (FileOutputStream fos = new FileOutputStream(tempFile)) {
                     byte[] buffer = new byte[4096];
                     int bytesRead;
-                    while (inputStream != null && (bytesRead = inputStream.read(buffer)) != -1) {
+                    if (inputStream == null) throw new IOException("Unable to open file stream.");
+                    while ((bytesRead = inputStream.read(buffer)) != -1) {
                         fos.write(buffer, 0, bytesRead);
                     }
                 }
+
+                // ** THIS IS THE NEW LOGIC **
+                // Import the schedule from the temporary file
+                com.nava.schedulepartner.models.Schedule schedule =
+                        scheduleManager.importSchedule(tempFile);
+
+                // Clean up the temp file
+                tempFile.delete();
 
                 // Update UI on main thread
                 runOnUiThread(() -> {

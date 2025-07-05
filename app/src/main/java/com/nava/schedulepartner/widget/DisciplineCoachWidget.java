@@ -72,10 +72,21 @@ public class DisciplineCoachWidget extends AppWidgetProvider {
     private static final String ACTION_TOGGLE_MUTE = "com.nava.schedulepartner.TOGGLE_MUTE";
 
     /**
-     * Time formatter for widget display.
+     * Standard time formatter for consistent display and parsing.
+     * <p>
+     * Uses 24-hour format (HH:mm) for clarity and international
+     * compatibility.
      */
     private static final DateTimeFormatter TIME_FORMATTER =
             DateTimeFormatter.ofPattern("HH:mm");
+
+    /**
+     * Alternative formatter for parsing 12-hour format with AM/PM.
+     * <p>
+     * Supports times like "05:00:00 PM" from CSV files.
+     */
+    private static final DateTimeFormatter TIME_FORMATTER_12H =
+            DateTimeFormatter.ofPattern("hh:mm:ss a");
 
     /**
      * Updates all widget instances with current data.

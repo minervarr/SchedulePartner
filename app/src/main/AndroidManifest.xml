@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
 
     <application
         android:allowBackup="true"
@@ -49,7 +50,7 @@
         <!-- Coaching Service -->
         <service
             android:name=".services.CoachingService"
-            android:exported="false" />
+            android:foregroundServiceType="mediaPlayback" />
 
         <!-- Widget Provider -->
         <receiver

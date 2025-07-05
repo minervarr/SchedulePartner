@@ -95,6 +95,8 @@ public class CoachingService extends Service {
      */
     public interface CoachingListener {
         void onEventTriggered(ScheduleEvent event);
+
+        void OnBackPressedCallback();
     }
 
     /**
@@ -437,13 +439,24 @@ public class CoachingService extends Service {
      * Ensures device wakes up for 30 seconds to handle the event
      * and allow user to see/hear the alert.
      */
+    /**
+     * Acquires a temporary wake lock for critical events.
+     * <p>
+     * Ensures device wakes up for 30 seconds to handle the event
+     * and allow user to see/hear the alert.
+     */
     private void acquireTemporaryWakeLock() {
         PowerManager powerManager = (PowerManager) getSystemService(POWER_SERVICE);
         PowerManager.WakeLock tempWakeLock = powerManager.newWakeLock(
-                PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP,
-                "DisciplineCoach:CriticalEvent"
+                PowerManager.PARTIAL_WAKE_LOCK,
+                "DisciplineCoach:TempWakeLock"
         );
-        tempWakeLock.acquire(30000); // 30 seconds
+
+        // Acquire the wake lock with a 30-second timeout.
+        // The system will automatically release it after this duration.
+        tempWakeLock.acquire(30 * 1000L); // 30 seconds in milliseconds
+
+        Log.d(TAG, "Temporary wake lock acquired for a critical event.");
     }
 
     /**
