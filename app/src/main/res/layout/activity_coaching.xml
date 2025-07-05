@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:fitsSystemWindows="true"
     tools:context=".activities.CoachingActivity">
 
-    <!-- Top Bar -->
     <LinearLayout
         android:id="@+id/layoutTopBar"
         android:layout_width="match_parent"
@@ -39,7 +39,6 @@
             android:contentDescription="@string/mute_audio" />
     </LinearLayout>
 
-    <!-- Session Info -->
     <TextView
         android:id="@+id/tvSessionInfo"
         android:layout_width="match_parent"
@@ -51,7 +50,6 @@
         android:textSize="18sp"
         android:textAlignment="center" />
 
-    <!-- Divider -->
     <View
         android:id="@+id/divider1"
         android:layout_width="match_parent"
@@ -60,7 +58,6 @@
         android:layout_marginTop="16dp"
         android:background="@color/divider_color" />
 
-    <!-- Current Event Card -->
     <LinearLayout
         android:id="@+id/layoutCurrentEvent"
         android:layout_width="match_parent"
@@ -101,7 +98,6 @@
             android:textAlignment="center" />
     </LinearLayout>
 
-    <!-- Time Until Next -->
     <TextView
         android:id="@+id/tvTimeUntilNext"
         android:layout_width="match_parent"
@@ -114,7 +110,6 @@
         android:textAlignment="center"
         android:visibility="gone" />
 
-    <!-- Upcoming Events Section -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -147,7 +142,6 @@
         </ScrollView>
     </LinearLayout>
 
-    <!-- Bottom Buttons -->
     <LinearLayout
         android:id="@+id/layoutBottomButtons"
         android:layout_width="match_parent"
