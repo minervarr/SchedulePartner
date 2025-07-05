@@ -257,46 +257,42 @@ public class SettingsActivity extends AppCompatActivity {
      * @param uri The URI of the selected file
      */
     private void handleScheduleImport(Uri uri) {
-        try {
-            // Copy file to temp location
-            InputStream inputStream = getContentResolver().openInputStream(uri);
-            File tempFile = new File(getCacheDir(), "import_schedule.csv");
+        // Run on background thread
+        new Thread(() -> {
+            try {
+                // Copy file to temp location
+                InputStream inputStream = getContentResolver().openInputStream(uri);
+                File tempFile = new File(getCacheDir(), "import_schedule.csv");
 
-            try (FileOutputStream fos = new FileOutputStream(tempFile)) {
-                byte[] buffer = new byte[4096];
-                int bytesRead;
-                while (inputStream != null && (bytesRead = inputStream.read(buffer)) != -1) {
-                    fos.write(buffer, 0, bytesRead);
+                try (FileOutputStream fos = new FileOutputStream(tempFile)) {
+                    byte[] buffer = new byte[4096];
+                    int bytesRead;
+                    while (inputStream != null && (bytesRead = inputStream.read(buffer)) != -1) {
+                        fos.write(buffer, 0, bytesRead);
+                    }
                 }
+
+                // Update UI on main thread
+                runOnUiThread(() -> {
+                    if (schedule != null) {
+                        Toast.makeText(this,
+                                getString(R.string.imported_schedule_format, schedule.getName()),
+                                Toast.LENGTH_LONG).show();
+                        setResult(RESULT_OK);
+                    } else {
+                        Toast.makeText(this,
+                                getString(R.string.error_invalid_csv),
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+            } catch (IOException e) {
+                runOnUiThread(() -> {
+                    Toast.makeText(this,
+                            getString(R.string.error_importing_schedule, e.getMessage()),
+                            Toast.LENGTH_LONG).show();
+                });
             }
-
-            inputStream.close();
-
-            // Import the schedule
-            com.nava.schedulepartner.models.Schedule schedule =
-                    scheduleManager.importSchedule(tempFile);
-
-            if (schedule != null) {
-                Toast.makeText(this,
-                        "Imported: " + schedule.getName(),
-                        Toast.LENGTH_LONG).show();
-
-                // Notify main activity to refresh
-                setResult(RESULT_OK);
-            } else {
-                Toast.makeText(this,
-                        getString(R.string.error_invalid_csv),
-                        Toast.LENGTH_LONG).show();
-            }
-
-            // Clean up temp file
-            tempFile.delete();
-
-        } catch (IOException e) {
-            Toast.makeText(this,
-                    "Error importing schedule: " + e.getMessage(),
-                    Toast.LENGTH_LONG).show();
-        }
+        }).start();
     }
 
     /**

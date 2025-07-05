@@ -1,0 +1,2 @@
+neriou@nitroU:~/AndroidStudioProjects/SchedulePartner/app/release$ java -jar ~/Downloads/bundletool-all-1.18.1.jar build-apks --bundle=app-release.aab --output=my_app.apks --mode=universal
+

@@ -27,6 +27,7 @@ import com.nava.schedulepartner.models.ScheduleEvent;
 import com.nava.schedulepartner.services.CoachingService;
 import com.nava.schedulepartner.utils.AudioManager;
 import com.nava.schedulepartner.utils.ScheduleManager;
+import com.nava.schedulepartner.widget.DisciplineCoachWidget;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -113,6 +114,13 @@ public class CoachingActivity extends AppCompatActivity implements CoachingServi
         enableDndIfRequired();
 
         updateHandler.post(updateRunnable);
+
+        DisciplineCoachWidget.updateSessionState(
+                this,
+                true,
+                sessionContext.getIdentifier(),
+                sessionActivity.getIdentifier()
+        );
     }
 
     private boolean loadSessionParameters() {
@@ -375,6 +383,7 @@ public class CoachingActivity extends AppCompatActivity implements CoachingServi
         stopService(stopIntent);
 
         disableDndIfEnabled();
+        DisciplineCoachWidget.updateSessionState(this, false, null, null);
 
         finish();
     }
